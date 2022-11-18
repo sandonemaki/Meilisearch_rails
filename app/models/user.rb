@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include MeiliSearch::Rails
 
-  has_many :books
+  has_many :books, dependent: :destroy
   after_save {books.each(&:touch)}
 
   meilisearch {
