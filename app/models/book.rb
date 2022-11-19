@@ -10,5 +10,4 @@ class Book < ApplicationRecord
       user.family_name
     end
   }
-
 end
