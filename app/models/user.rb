@@ -3,6 +3,14 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   after_save {books.each(&:touch)}
+
+  meilisearch {
+    attribute :family_name, :given_name
+    attribute :book do
+      books.map(&:title).join(',')
+    end
+    searchable_attributes [:given_name, :family_name, :book]
+  }
 end
 #  meilisearch {
 #    attribute :family_name, :given_name, :age
