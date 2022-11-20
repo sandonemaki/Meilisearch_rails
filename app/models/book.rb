@@ -2,7 +2,7 @@ class Book < ApplicationRecord
   include MeiliSearch::Rails
 
   belongs_to :user
-  # after_touch :index!
+  after_touch :index!
   after_touch {User.reindex!}
 
   meilisearch {
