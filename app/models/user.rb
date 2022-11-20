@@ -11,7 +11,6 @@ class User < ApplicationRecord
     end
     searchable_attributes [:given_name, :family_name, :book]
   }
-
 end
 #  meilisearch {
 #    attribute :family_name, :given_name, :age
