@@ -5,11 +5,12 @@ class User < ApplicationRecord
   after_save {books.each(&:touch)}
 
   meilisearch {
-    attribute :family_name, :given_name
+    attribute :family_name, :given_name, :age
     attribute :book do
       books.map(&:title).join(',')
     end
-    searchable_attributes [:given_name, :family_name, :book]
+    searchable_attributes [:given_name, :family_name, :book, :age]
+    filterable_attributes [:age]
   }
 end
 #  meilisearch {
