@@ -3,7 +3,7 @@ class Book < ApplicationRecord
 
   belongs_to :user
   after_touch :index!
-  after_touch {User.reindex!}
+  # after_touch {User.reindex!}
 
   meilisearch {
     attribute :title, :price
